@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { forceCheck } from 'react-lazyload';
 import Slider from '../../components/slider';
 import RecommendList from '../../components/list';
-import Scroll from '../../components/scroll';
+import Scroll from '../../baseUI/scroll';
 import { Content } from '../../components/list/style';
 import * as actionTypes from './store/actionCreators';
 import Loading from '../../baseUI/loading/index';
