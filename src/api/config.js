@@ -1,187 +1,215 @@
-import axios from 'axios';
+import axios from "axios";
 
-export const baseUrl = 'http://127.0.0.1:4000'
+export const baseUrl = "http://127.0.0.1:4000";
 
 const axiosInstance = axios.create({
-    baseURL: baseUrl
+  baseURL: baseUrl,
 });
 
 axiosInstance.interceptors.response.use(
-    res => res.data,
-    err => {
-        console.log(err, "网络错误");
-    }
+  (res) => res.data,
+  (err) => {
+    console.log(err, "网络错误");
+  }
 );
 
-export {
-    axiosInstance
-};
+export { axiosInstance };
 
-export const categoryTypes = [{
+export const categoryTypes = [
+  {
     name: "华语男",
-    key: "1001"
-},
-{
+    key: "1001",
+  },
+  {
     name: "华语女",
-    key: "1002"
-},
-{
+    key: "1002",
+  },
+  {
     name: "华语组合",
-    key: "1003"
-},
-{
+    key: "1003",
+  },
+  {
     name: "欧美男",
-    key: "2001"
-},
-{
+    key: "2001",
+  },
+  {
     name: "欧美女",
-    key: "2002"
-},
-{
+    key: "2002",
+  },
+  {
     name: "欧美组合",
-    key: "2003"
-},
-{
+    key: "2003",
+  },
+  {
     name: "日本男",
-    key: "6001"
-},
-{
+    key: "6001",
+  },
+  {
     name: "日本女",
-    key: "6002"
-},
-{
+    key: "6002",
+  },
+  {
     name: "日本组合",
-    key: "6003"
-},
-{
+    key: "6003",
+  },
+  {
     name: "韩国男",
-    key: "7001"
-},
-{
+    key: "7001",
+  },
+  {
     name: "韩国女",
-    key: "7002"
-},
-{
+    key: "7002",
+  },
+  {
     name: "韩国组合",
-    key: "7003"
-},
-{
+    key: "7003",
+  },
+  {
     name: "其他男歌手",
-    key: "4001"
-},
-{
+    key: "4001",
+  },
+  {
     name: "其他女歌手",
-    key: "4002"
-},
-{
+    key: "4002",
+  },
+  {
     name: "其他组合",
-    key: "4003"
-},
+    key: "4003",
+  },
 ];
 
 // 歌手首字母
-export const alphaTypes = [{
+export const alphaTypes = [
+  {
     key: "A",
-    name: "A"
-},
-{
+    name: "A",
+  },
+  {
     key: "B",
-    name: "B"
-},
-{
+    name: "B",
+  },
+  {
     key: "C",
-    name: "C"
-},
-{
+    name: "C",
+  },
+  {
     key: "D",
-    name: "D"
-},
-{
+    name: "D",
+  },
+  {
     key: "E",
-    name: "E"
-},
-{
+    name: "E",
+  },
+  {
     key: "F",
-    name: "F"
-},
-{
+    name: "F",
+  },
+  {
     key: "G",
-    name: "G"
-},
-{
+    name: "G",
+  },
+  {
     key: "H",
-    name: "H"
-},
-{
+    name: "H",
+  },
+  {
     key: "I",
-    name: "I"
-},
-{
+    name: "I",
+  },
+  {
     key: "J",
-    name: "J"
-},
-{
+    name: "J",
+  },
+  {
     key: "K",
-    name: "K"
-},
-{
+    name: "K",
+  },
+  {
     key: "L",
-    name: "L"
-},
-{
+    name: "L",
+  },
+  {
     key: "M",
-    name: "M"
-},
-{
+    name: "M",
+  },
+  {
     key: "N",
-    name: "N"
-},
-{
+    name: "N",
+  },
+  {
     key: "O",
-    name: "O"
-},
-{
+    name: "O",
+  },
+  {
     key: "P",
-    name: "P"
-},
-{
+    name: "P",
+  },
+  {
     key: "Q",
-    name: "Q"
-},
-{
+    name: "Q",
+  },
+  {
     key: "R",
-    name: "R"
-},
-{
+    name: "R",
+  },
+  {
     key: "S",
-    name: "S"
-},
-{
+    name: "S",
+  },
+  {
     key: "T",
-    name: "T"
-},
-{
+    name: "T",
+  },
+  {
     key: "U",
-    name: "U"
-},
-{
+    name: "U",
+  },
+  {
     key: "V",
-    name: "V"
-},
-{
+    name: "V",
+  },
+  {
     key: "W",
-    name: "W"
-},
-{
+    name: "W",
+  },
+  {
     key: "X",
-    name: "X"
-},
-{
+    name: "X",
+  },
+  {
     key: "Y",
-    name: "Y"
-},
-{
+    name: "Y",
+  },
+  {
     key: "Z",
-    name: "Z"
-}
+    name: "Z",
+  },
 ];
+
+//排行榜编号
+export const RankTypes = {
+  0: "云音乐新歌榜",
+  1: "云音乐热歌榜",
+  2: "网易原创歌曲榜",
+  3: "云音乐飙升榜",
+  4: "云音乐国电榜",
+  5: "UK排行榜周榜",
+  6: "美国Billboard周榜",
+  7: "KTV唛榜",
+  8: "iTunes榜",
+  9: "Hit FM Top榜",
+  10: "日本Oricon周榜",
+  11: "韩国Melon排行榜周榜",
+  12: "韩国Mnet排行榜周榜",
+  13: "韩国Melon原声周榜",
+  14: "中国TOP排行榜（港台榜）",
+  15: "中国TOP排行榜（内地榜）",
+  16: "香港电台中文歌曲龙虎榜",
+  17: "华语金曲榜",
+  18: "中国嘻哈榜",
+  19: "法国 NRJ Vos Hits 周榜",
+  20: "台湾Hito排行榜",
+  21: "Beatport全球电子舞曲榜",
+  22: "云音乐ACG音乐榜",
+  23: "江小白YOLO云音乐说唱榜",
+};
