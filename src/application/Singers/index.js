@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LazyLoad, { forceCheck } from "react-lazyload";
+import { useNavigate, Outlet } from "react-router-dom";
 import Horizen from "../../baseUI/horizen-item";
 import Scroll from "../../baseUI/scroll";
 import Loading from "../../baseUI/loading/index";
@@ -22,6 +23,7 @@ function Singers(props) {
   let [category, setCategory] = useState("");
   let [alpha, setAlpha] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getHotSingerList());
@@ -74,13 +76,19 @@ function Singers(props) {
     state.getIn(["singers", "pageCount"])
   );
   const singerListJS = singerList ? singerList.toJS() : [];
+  const enterDetail = (id) => {
+    navigate(`/singers/${id}`);
+  };
 
   const RenderSingerList = () => {
     return (
       <List>
         {singerListJS.map((item, index) => {
           return (
-            <ListItem key={item.accountId + "" + index}>
+            <ListItem
+              key={item.accountId + "" + index}
+              onClick={() => enterDetail(item.id)}
+            >
               <div className="img_wrapper">
                 <img
                   src={`${item.picUrl}?param=300x300`}
@@ -125,6 +133,9 @@ function Singers(props) {
         </Scroll>
         <Loading show={enterLoading}></Loading>
       </ListContainer>
+      <div className="ttt">
+        <Outlet />
+      </div>
     </div>
   );
 }

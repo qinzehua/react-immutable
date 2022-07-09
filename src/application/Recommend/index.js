@@ -7,6 +7,7 @@ import Scroll from "../../baseUI/scroll";
 import { Content } from "../../components/list/style";
 import * as actionTypes from "./store/actionCreators";
 import Loading from "../../baseUI/loading/index";
+import { Outlet } from "react-router";
 
 function Recommend(props) {
   const bannerList = useSelector((state) => {
@@ -36,6 +37,7 @@ function Recommend(props) {
         </div>
       </Scroll>
       {enterLoading ? <Loading></Loading> : null}
+      <Outlet />
     </Content>
   );
 }

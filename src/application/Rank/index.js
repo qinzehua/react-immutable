@@ -5,6 +5,7 @@ import { getRankList } from "./store";
 import Loading from "../../baseUI/loading";
 import { List, ListItem, SongList, Container } from "./style";
 import Scroll from "../../baseUI/scroll/index";
+import { useNavigate, Outlet } from "react-router-dom";
 
 function Rank(props) {
   const rankList = useSelector((state) => {
@@ -23,12 +24,9 @@ function Rank(props) {
   let officialList = rankListJS.slice(0, globalStartIndex);
   let globalList = rankListJS.slice(globalStartIndex);
 
-  const enterDetail = (name) => {
-    const idx = filterIdx(name);
-    if (idx === null) {
-      alert("暂无相关数据");
-      return;
-    }
+  const navigate = useNavigate();
+  const enterDetail = (detail) => {
+    navigate(`/rank/${detail.id}`);
   };
 
   const renderRankList = (list, global) => {
@@ -39,7 +37,7 @@ function Rank(props) {
             <ListItem
               key={item.id}
               tracks={item.tracks}
-              onClick={() => enterDetail(item.name)}
+              onClick={() => enterDetail(item)}
             >
               <div className="img_wrapper">
                 <img src={item.coverImgUrl} alt="" />
@@ -88,6 +86,7 @@ function Rank(props) {
           {loading ? <Loading></Loading> : null}
         </div>
       </Scroll>
+      <Outlet />
     </Container>
   );
 }
